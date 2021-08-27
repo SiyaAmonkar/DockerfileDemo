@@ -1,6 +1,5 @@
 FROM registry.access.redhat.com/ubi7/ubi
 
-FROM registry.access.redhat.com/ubi7/ubi
 
 ENV CONDA_HOME=${CONDA_HOME:-/opt/conda}
 ENV PATH=$CONDA_HOME/bin:$PATH
@@ -12,9 +11,9 @@ ARG GROUP_ID=1500
 ENV BUILD_USER=builder
 ARG BUILD_ID=1084
 
-ENV OC_PASS
-ENV OC_USER
-ENV OC_CLUSTER
+ARG OC_PASS
+ARG OC_USER
+ARG OC_CLUSTER
 ARG ARGO_PROJECT=open-ce-ci
 
 RUN export ARCH="$(uname -m)" && \
