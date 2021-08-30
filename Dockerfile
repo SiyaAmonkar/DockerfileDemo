@@ -48,7 +48,7 @@ RUN export PATH="${PATH}" && \
     echo "conda activate base" >> ${HOME}/.bashrc
 
 RUN export ARCH="$(uname -m)" && \
-    curl -sL https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz -o oc.tar.gz && \
+    curl -sL https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz -o oc.tar.gz 
     #tar -xvzf oc.tar.gz && \ 
     #chmod +x oc && \
     #mkdir -p $HOME/bin && \
