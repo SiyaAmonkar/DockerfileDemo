@@ -53,10 +53,10 @@ RUN export ARCH="$(uname -m)" && \
     chmod +x oc && \
     mkdir -p $HOME/bin && \
     mv ./oc $HOME/bin/oc && \ 
-    PATH=$HOME/bin:$PATH && \
-    echo "$(echo -ne 'nameserver 9.3.89.109\n'; cat /etc/resolv.conf)" > /etc/resolv.conf && \
-    echo ${OC_PASS} ${OC_USER} ${OC_CLUSTER} && \
-    curl -sL https://github.com/argoproj/argo-workflows/releases/download/v2.11.0/argo-linux-${ARCH}.gz -o argo-linux.gz && \
-    gunzip argo-linux.gz && \
-    chmod +x argo-linux && \
-    mv ./argo-linux $HOME/bin/argo 
+    PATH=$HOME/bin:$PATH 
+    #echo "$(echo -ne 'nameserver 9.3.89.109\n'; cat /etc/resolv.conf)" > /etc/resolv.conf && \
+    #echo ${OC_PASS} ${OC_USER} ${OC_CLUSTER} && \
+    #curl -sL https://github.com/argoproj/argo-workflows/releases/download/v2.11.0/argo-linux-${ARCH}.gz -o argo-linux.gz && \
+    #gunzip argo-linux.gz && \
+    #chmod +x argo-linux && \
+    #mv ./argo-linux $HOME/bin/argo 
