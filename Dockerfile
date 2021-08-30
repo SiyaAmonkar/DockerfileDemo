@@ -47,16 +47,20 @@ RUN export PATH="${PATH}" && \
     echo "export PYTHONPATH=${PYTHONPATH}:$HOME/open_ce" >> ${HOME}/.bashrc && \
     echo "conda activate base" >> ${HOME}/.bashrc
 
-RUN export ARCH="$(uname -m)" 
-    #curl -sL https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz -o oc.tar.gz 
-    #tar -xvzf oc.tar.gz && \ 
-    #chmod +x oc && \
-    #mkdir -p $HOME/bin && \
-    #mv ./oc $HOME/bin/oc && \ 
-    #PATH=$HOME/bin:$PATH 
+RUN export ARCH="$(uname -m)" && \
+    curl -sL https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux-${ARCH}/oc.tar.gz -o ${HOME}/oc.tar.gz && \
+    cd ${HOME} && \
+    tar -xvzf oc.tar.gz && \
+    chmod +x oc && \
+    mkdir -p $HOME/bin && \
+    mv ./oc $HOME/bin/oc && \
+    PATH=$HOME/bin:$PATH && \
+    oc version && \
     #echo "$(echo -ne 'nameserver 9.3.89.109\n'; cat /etc/resolv.conf)" > /etc/resolv.conf && \
     #echo ${OC_PASS} ${OC_USER} ${OC_CLUSTER} && \
-    #curl -sL https://github.com/argoproj/argo-workflows/releases/download/v2.11.0/argo-linux-${ARCH}.gz -o argo-linux.gz 
-    #gunzip argo-linux.gz && \
-    #chmod +x argo-linux && \
-    #mv ./argo-linux $HOME/bin/argo 
+    curl -sL https://github.com/argoproj/argo-workflows/releases/download/v2.11.0/argo-linux-${ARCH}.gz -o argo-linux.gz && \
+    gunzip argo-linux.gz && \
+    chmod +x argo-linux && \
+    mv ./argo-linux $HOME/bin/argo && \
+    argo version
+
