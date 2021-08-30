@@ -11,9 +11,9 @@ ARG GROUP_ID=1500
 ENV BUILD_USER=builder
 ARG BUILD_ID=1084
 
-ARG OC_PASS
-ARG OC_USER
-ARG OC_CLUSTER
+ARG OC_PASS=askad
+ARG OC_USER=kubeadmin
+ARG OC_CLUSTER=x86
 ARG ARGO_PROJECT=open-ce-ci
 
 RUN export ARCH="$(uname -m)" && \
@@ -55,6 +55,8 @@ RUN export ARCH="$(uname -m)" && \
     mv ./oc $HOME/bin/oc && \ 
     PATH=$HOME/bin:$PATH && \
     echo "$(echo -ne 'nameserver 9.3.89.109\n'; cat /etc/resolv.conf)" > /etc/resolv.conf && \
-    echo ${OC_PASS} | oc login -u ${OC_USER} ${OC_CLUSTER} -n ${ARGO_PROJECT} --insecure-skip-tls-verify=true && \
+    echo ${OC_PASS} ${OC_USER} ${OC_CLUSTER} && \
     curl -sL https://github.com/argoproj/argo-workflows/releases/download/v2.11.0/argo-linux-${ARCH}.gz -o argo-linux.gz && \
-    gunzip argo-linux.gz && chmod +x argo-linux && mv ./argo-linux $HOME/bin/argo 
+    gunzip argo-linux.gz && \
+    chmod +x argo-linux && \
+    mv ./argo-linux $HOME/bin/argo 
