@@ -2,7 +2,8 @@ FROM registry.access.redhat.com/ubi7/ubi
 
 
 ENV CONDA_HOME=${CONDA_HOME:-/opt/conda}
-ENV PATH=$CONDA_HOME/bin:$PATH
+ENV HOME=/home/builder/
+ENV PATH=$CONDA_HOME/bin:$HOME/bin:$PATH
 
 ENV OPEN_CE_CONDA_BUILD=3.21.4
 
@@ -35,7 +36,8 @@ RUN export ARCH="$(uname -m)" && \
     $CONDA_HOME/bin/conda config --system --set notify_outdated_conda false && \
     $CONDA_HOME/bin/conda --version && \
     mkdir -p $CONDA_HOME/conda-bld && \
-    mkdir -p $HOME/.cache && \
+    mkdir -p 
+    /.cache && \
     echo "export PYTHONPATH=${PYTHONPATH}:$HOME/open_ce" >> ${HOME}/.bashrc && \
     chown -R ${BUILD_USER}:${CICD_GROUP} ${CONDA_HOME}
 
