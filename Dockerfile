@@ -65,4 +65,4 @@ RUN export ARCH="$(uname -m)" && \
 COPY ./loopscript.sh $HOME/loopscript.sh
 
 WORKDIR $HOME
-ENTRYPOINT ["/bin/bash", "/loopscript.sh"]
+ENTRYPOINT ["bash", "loopscript.sh"]
