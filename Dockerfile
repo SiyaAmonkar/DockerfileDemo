@@ -2,7 +2,7 @@ FROM registry.access.redhat.com/ubi7/ubi
 
 
 ENV CONDA_HOME=${CONDA_HOME:-/opt/conda}
-ENV HOME=/home/builder/
+ENV HOME=/home/builder
 ENV PATH=$CONDA_HOME/bin:$HOME/bin:$PATH
 
 ENV OPEN_CE_CONDA_BUILD=3.21.4
