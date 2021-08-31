@@ -36,8 +36,7 @@ RUN export ARCH="$(uname -m)" && \
     $CONDA_HOME/bin/conda config --system --set notify_outdated_conda false && \
     $CONDA_HOME/bin/conda --version && \
     mkdir -p $CONDA_HOME/conda-bld && \
-    mkdir -p 
-    /.cache && \
+    mkdir -p $HOME/.cache && \
     echo "export PYTHONPATH=${PYTHONPATH}:$HOME/open_ce" >> ${HOME}/.bashrc && \
     chown -R ${BUILD_USER}:${CICD_GROUP} ${CONDA_HOME}
 
