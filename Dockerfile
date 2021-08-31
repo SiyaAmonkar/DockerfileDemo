@@ -63,4 +63,6 @@ RUN export ARCH="$(uname -m)" && \
     mv ./argo-linux $HOME/bin/argo && \
     argo version
 COPY ./loopscript.sh $HOME/loopscript.sh
+
+WORKDIR $HOME
 ENTRYPOINT ["/bin/bash", "/loopscript.sh"]
