@@ -27,8 +27,8 @@ do
     # send a slack notification
   else
     echo "Refresh templates and crons"
-    bash scripts/refresh_template.sh
-    bash scripts/refresh_cron.sh
+    #bash scripts/refresh_template.sh
+    #bash scripts/refresh_cron.sh
     old_ci_commit_id=$ci_commit_id
     # send a slack notification
     #status=$(curl -X POST \
