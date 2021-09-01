@@ -60,6 +60,8 @@ RUN export ARCH="$(uname -m)" && \
     argo version
 COPY ./loopscript.sh $HOME/loopscript.sh
 
+RUN --mount=type=secret,id=secret-ssh cat /run/secrets/secret-ssh
+
 WORKDIR $HOME
 
 ENTRYPOINT ["bash", "loopscript.sh"]
