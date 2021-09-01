@@ -12,10 +12,6 @@ ARG GROUP_ID=1500
 ENV BUILD_USER=builder
 ARG BUILD_ID=1084
 
-ARG OC_PASS=askad
-ARG OC_USER=kubeadmin
-ARG OC_CLUSTER=x86
-ARG ARGO_PROJECT=open-ce-ci
 
 RUN export ARCH="$(uname -m)" && \
     yum repolist && yum install -y rsync openssh-clients && \
@@ -65,4 +61,7 @@ RUN export ARCH="$(uname -m)" && \
 COPY ./loopscript.sh $HOME/loopscript.sh
 
 WORKDIR $HOME
+
+RUN chmod -R 777 loopscript.sh
+
 ENTRYPOINT ["bash", "loopscript.sh"]
