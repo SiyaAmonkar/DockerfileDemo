@@ -62,6 +62,6 @@ COPY ./loopscript.sh $HOME/loopscript.sh
 
 WORKDIR $HOME
 
-RUN chmod -R 777 loopscript.sh
+RUN sudo chmod -R 777 loopscript.sh
 
 ENTRYPOINT ["bash", "loopscript.sh"]
