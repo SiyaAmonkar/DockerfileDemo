@@ -10,7 +10,7 @@ echo $OC_PASS $OC_USER $OC_CLUSTER $ARGO_PROJECT $PAT
 echo "$(echo -ne 'nameserver 9.3.89.109\n'; cat /etc/resolv.conf)" > /etc/resolv.conf
 echo $OC_PASS | oc login -u $OC_USER $OC_CLUSTER -n $ARGO_PROJECT --insecure-skip-tls-verify=true
 old_ci_commit_id=""
-git config --global --add core.sshCommand 'ssh -i $SSH_KEY -o StrictHostKeyChecking=no'
+git config --global --add core.sshCommand 'ssh -i /tmp/secrets/ssh-privatekey -o StrictHostKeyChecking=no'
 
 while true
 do
