@@ -1,4 +1,3 @@
 FROM registry.access.redhat.com/ubi7/ubi
 
-VOLUME /tmp/secrets
-ENTRYPOINT ["bash", "test.sh"]
+RUN --mount=type=secret,id=secret-ssh cat run/secrets/secret-ssh
