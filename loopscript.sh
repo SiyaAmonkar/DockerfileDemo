@@ -18,7 +18,7 @@ do
 # check change in commit ID's for ci repo
   
   #git clone -b master --single-branch git@github.ibm.com:open-ce/ci.git --depth=1
-  whoami
+  oc whoami
   git clone -b master --single-branch https://$PAT@github.ibm.com/open-ce/ci.git --depth=1
   echo "cloning complete"
   cd ci && ci_commit_id=$(git log --format="%H" -n 1)
