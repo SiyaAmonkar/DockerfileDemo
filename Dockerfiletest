@@ -1,3 +1,0 @@
-FROM registry.access.redhat.com/ubi7/ubi
-
-RUN --mount=type=secret,id=github-ibm-ssh cat run/secrets/github-ibm-ssh
