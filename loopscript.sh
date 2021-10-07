@@ -15,10 +15,16 @@ old_ci_commit_id=""
 
 while true
 do
-# check change in commit ID's for ci repo
+# check if login session has expired
+  oc whoami
+  user=$(oc whoami)
+  if [ $user != "kube:admin" ] 
+  then 
+    echo $OC_PASS | oc login -u $OC_USER $OC_CLUSTER -n $ARGO_PROJECT --insecure-skip-tls-verify=true
+  fi
   
   #git clone -b master --single-branch git@github.ibm.com:open-ce/ci.git --depth=1
-  oc whoami
+  
   git clone -b master --single-branch https://$PAT@github.ibm.com/open-ce/ci.git --depth=1
   echo "cloning complete"
   cd ci && ci_commit_id=$(git log --format="%H" -n 1)
